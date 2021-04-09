@@ -1,0 +1,13 @@
+{
+ "bind_addr": "{{ ansible_ip_addresses[0] }}",
+ "datacenter": "dc1",
+ "data_dir": "c:\\consul",
+ "node_name": "{{ ansible_hostname }}",
+ "server": false,
+ "rejoin_after_leave": true,
+ "retry_join": [
+    "{{ target_environment|default('qa') }}cnsul01", 
+    "{{ target_environment|default('qa') }}cnsul02", 
+    "{{ target_environment|default('qa') }}cnsul03"
+    ]
+ }

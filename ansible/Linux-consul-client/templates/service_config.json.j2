@@ -1,0 +1,13 @@
+{
+  "datacenter": "dc1",
+  "data_dir": "/usr/lib/consul",
+  "log_level": "INFO",
+  "node_name": "{{ ansible_hostname }}",
+  "server": true,
+  "bootstrap_expect": 3,
+  "retry_join": ["prodcnsul01.colocation1.austin.kinnser.com","prodcnsul02.colocation1.austin.kinnser.com","prodcnsul03.colocation1.austin.kinnser.com"],
+  "client_addr": "{{ ansible_default_ipv4.address }}",
+  "bind_addr": "{{ ansible_default_ipv4.address }}",
+  "ui": true,
+  "enable_syslog": true
+}

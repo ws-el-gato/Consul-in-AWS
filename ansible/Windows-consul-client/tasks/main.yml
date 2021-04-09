@@ -1,0 +1,49 @@
+---
+
+- name: Create nssm directory
+  win_file:
+    path: C:\nssm
+    state: directory
+  tags:
+    - create_nssm_directory
+
+- name: Download nssm to target
+  win_get_url:
+    url: http://hou-arti1.austin.kinnser.com:8081/artifactory/third-party-release-local/nssm/nssm.exe
+    dest: C:\nssm\nssm.exe
+    force: no
+  tags:
+    - deploy_nssm_to_target
+
+- name: Create consul directory structure
+  win_file:
+    path: C:\consul\consul.d
+    state: directory
+  tags:
+    - create_consul_directory
+
+- name: Download consul to target
+  win_get_url:
+    url: http://hou-arti1.austin.kinnser.com:8081/artifactory/third-party-release-local/consul/consul.exe
+    dest: C:\consul\consul.exe
+    force: no
+  tags:
+    - deploy_consul_to_target
+
+- name: copy consul config to target
+  win_template:
+    src: templates/config.json.j2
+    dest: C:\consul\consul.d\config.json
+    register: consul_config_file
+  tags:
+   - copy_consul_config_file
+
+- name: Run nssm to install consul service
+  win_command: c:\nssm\nssm.exe install "Consul Agent" c:\consul\consul.exe agent -config-dir=c:\consul\consul.d
+  args:
+    chdir: C:\consul\
+
+- name: Run nssm to set Consul Agent service logon parameters
+  win_command: c:\nssm\nssm.exe set "Consul Agent" ObjectName "Austin\svService" {{ svService_password }}
+  args:
+    chdir: C:\consul\
