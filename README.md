@@ -1,25 +1,6 @@
 
-
 <h1 align="center">Consul HSRE 1400</h1>
 
-
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Consul HSRE 1400 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
-
-<p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{ws-el-gato}}" target="_blank">Author</a>
-</p>
 
 <br>
 
@@ -27,11 +8,6 @@
 
 The Objective: To install Consul on all the instances & containers in AWS. 
 
-## :sparkles: Features ##
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
 
 ## :rocket: Technologies ##
 
@@ -43,6 +19,18 @@ The following UI is used in this project:
 ## :white_check_mark: Requirements ##
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Consul](https://www.consul.io/) installed.
+
+AWS account Number: 404083424001
+
+VPC ID: vpc-062715adebaadd00a
+
+VPC Region of Deploy: us-east-1
+
+VPC CIDR block: 10.0.0.0/16
+
+
+
+
 
 ## :checkered_flag: Starting ##
 
@@ -73,26 +61,33 @@ $ cp -rf consul-agent-config/* /opt/consul/
 
 $ sudo consul agent -config-dir=/opt/consul -data-dir=/opt/consul
 
+```
 
-# The server will initialize in the <http://localhost:3000>
+Notes on installing Consul via Cloud Managed via hashicorp.
 
-# Notes on installing Consul via Cloud Managed via hashicorp.
-# JIRA Ticket: HSRE-1400
-# Song Playing: Body and Soul - Scientist Remix
-# Had a meeting with Tim and it was mentioned that it's up to me to figure this out. So I am testing the Managed Hashicorp's Consul. 
-# Install has been easy. I was able to get the VPC and Peering done today in the sandbox account... this is on Read-Only Fridays.argh
-# But this is just testing. So no alerts should happen. 
+Install has been easy. I was able to get the VPC and Peering done today in the sandbox account... this is on Read-Only Fridays.argh But this is just testing. So no alerts should happen. 
 
-The Objective: To install Consul on all the instances & containers in AWS. 
+# The Objective: 
+
+To install Consul on all the instances & containers in AWS. 
 
 # Let's talk about the naming system. 
-    * Alpha test will start with an A appending a Number
+
+  * Alpha test will start with an A appending a Number
         Example: consul-A1 , consul-A2 , consule-A3 ect.. 
-    * Beta test will start with a B followed by a Number
+  
+  * Beta test will start with a B followed by a Number
         Example: consul-B1 , consul-B2 , consule-B3 ect.. 
-# These Groups Alpha and Beta will be test cases to report back to Consul-Mother. 
-\ URL: https://hhh-consul-mother.consul.7f00190b-f5e0-4010-ba52-d6cb799f4985.aws.hashicorp.cloud/ui/dc1/nodes( $50 Test limit)
--- Truthfully this managed way is much easier then sliced bread. This is the Pitch right here. Have hashicorp do it. 
+
+ These Groups Alpha and Beta will be test cases to report back to Consul-Mother. 
+
+
+Managed Consul UI URL: 
+https://hhh-consul-mother.consul.7f00190b-f5e0-4010-ba52-d6cb799f4985.aws.hashicorp.cloud/ui/dc1/nodes
+
+
+-- Truthfully this managed way is much easier then sliced bread. This is the Pitch right here. Have Hashicorp do it. --
+
 # While at it. Shot out to Managed Consul on Hashicorp.
  
 
