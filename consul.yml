@@ -1,0 +1,45 @@
+---
+- hosts: all
+  become: True
+  become_method: sudo
+
+  tasks:
+  - name: Download and extract Consul
+    unarchive:
+       src: https://releases.hashicorp.com/consul/0.9.3/consul_0.9.3_linux_amd64.zip
+       dest: /usr/local/bin
+       remote_src: True
+
+  - name: Create consul.d directory
+    file:
+      path: /etc/systemd/system/consul.d
+      state: directory
+      mode: 0755
+
+  - name: Create consul directory 
+    file:
+      path: /usr/lib/consul
+      state: directory
+  
+  - name: Copy service definition to target server
+    copy:
+      src: consul.service
+      dest: /etc/systemd/system/consul.service
+      group: root
+      owner: root
+      mode: 0644
+  
+  - name: Copy service configuration file
+    template:
+      src: templates/service_config.json.j2
+      dest: /etc/systemd/system/consul.d/service_config.json
+
+  - name: Change retry-join parameter in svc config file for cnsul01
+    replace: 
+      path: /etc/systemd/system/consul.d/service_config.json
+      regexp: '\["hhhevcnsul01"\]'
+      replace: '["hhhevcnsul02"]'
+    when: ansible_hostname == "hhhevcnsul01"
+      
+  - command: systemctl enable consul.service
+  - command: systemctl start consul

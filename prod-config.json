@@ -1,0 +1,19 @@
+# By Jordan Awesome Robison 
+# Email: jordan.robison@wellsky.com
+# Jira Ticket: 
+# Confluence Page: 
+# 
+#
+{
+  "datacenter": "dc3",
+  "data_dir": "/usr/lib/consul",
+  "log_level": "INFO",
+  "node_name": "{{ ansible_hostname }}",
+  "server": true,
+  "bootstrap_expect": 3,
+  "retry_join": ["PROD-01.colocation1.austin.kinnser.com","PROD-02.colocation1.austin.kinnser.com"],
+  "client_addr": "{{ ansible_default_ipv4.address }}",
+  "bind_addr": "{{ ansible_default_ipv4.address }}",
+  "ui": true,
+  "enable_syslog": true
+}
