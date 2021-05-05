@@ -94,7 +94,7 @@ https://hhh-consul-mother.consul.7f00190b-f5e0-4010-ba52-d6cb799f4985.aws.hashic
 {command_run}
 jordan.robison@WS-C02D35PQMD6R ~ % aws ec2 --region us-east-1 accept-vpc-peering-connection --vpc-peering-connection-id pcx-0bee6526bea614079
 
-{code}
+
 {
     "VpcPeeringConnection": {
         "AccepterVpcInfo": {
@@ -132,12 +132,12 @@ jordan.robison@WS-C02D35PQMD6R ~ % aws ec2 --region us-east-1 accept-vpc-peering
         "VpcPeeringConnectionId": "pcx-0bee6526bea614079"
     }
 }
-{code}
+
 
 {command_run}
 jordan.robison@WS-C02D35PQMD6R ~ % aws ec2 describe-vpc-peering-connections --filters Name=requester-vpc-info.vpc-id,Values=vpc-079741e2ac20a8c50 --output=table
 
-{code}
+
 ---------------------------------------------------------------
 |                DescribeVpcPeeringConnections                |
 +-------------------------------------------------------------+
@@ -195,7 +195,7 @@ jordan.robison@WS-C02D35PQMD6R ~ % aws ec2 describe-vpc-peering-connections --fi
 |||  Owner            |  HHH SRE                            |||
 |||  BusinessUnit     |  HHH                                |||
 ||+-------------------+-------------------------------------+||
-{code}
+
 
 # To describe all instances with Tag "Name" and its value as "consul-A1" Use: 
 aws ec2 describe-instances --filters "Name=tag:Name,Values=consul-A1" --output=table
@@ -305,9 +305,9 @@ aws ec2 describe-instances --filters "Name=tag:Name,Values=consul-A1" --output=t
 |||||  PrivateIpAddress                           |  10.212.224.210                         |||||
 ||||+---------------------------------------------+-----------------------------------------+||||
 
-{code}
 
-{code}
+
+
 -------------------------------------------------------------------------------------------------
 |                                       DescribeInstances                                       |
 +-----------------------------------------------------------------------------------------------+
@@ -435,7 +435,7 @@ aws ec2 describe-instances --filters "Name=tag:Name,Values=consul-A1" --output=t
 ||||  Name          |  consul-A1                                                             ||||
 ||||  name          |  hhh-consul-managed-hashicorp                                          ||||
 |||+----------------+------------------------------------------------------------------------+|||
-{code}
+
 
 ```
 After figuring out that the UI wasn't public I decided to restart to make the UI public but I had to clean up my VPC routing.
